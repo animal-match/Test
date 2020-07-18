@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>操作图片的更换.或者说有种轮播图的效果</h1>
+		<img src="img/1.jpg" alt="1">
+		<img src="img/1.jpg" data-target="img/1-l.jpg" class="my-small">
+		  <img src="img/2.jpg" data-target="img/2-l.jpg" class="my-small">
+		  <img src="img/3.jpg" data-target="img/3-l.jpg" class="my-small">
+		  <img src="img/4.jpg" data-target="img/4-l.jpg" class="my-small">
+		  <hr />
+		 <img src="img/1-l.jpg" class="my-big">
+		<script src="js/jquery-1.11.3.js" ></script>
+	<script type="text/javascript">
+		$("img").click(function(){
+			var $img=$(this);
+			var i=parseInt($img.attr("alt"));
+			if (i<4) {
+				i++;
+			} else{
+				i=1;
+			}
+			//最后将alt的值拼成新的src路径，设置到img的src属性上，
+			// 同时将alt的值再放回img的alt属性中。为下次点击做准备
+			$img.attr({src:`img/${i}.jpg`,alt:i})
+			  // $img.attr({ src:`img/${i}.jpg`, alt:i })
+		})
+		$("。my-small").click(function(){
+			                       当前小图片   获取data-target属性值
+			$(".my-big").attr("src",$(this).attr("data-target"))
+		})
+	</script>
+	
+		</body>
+</html>
